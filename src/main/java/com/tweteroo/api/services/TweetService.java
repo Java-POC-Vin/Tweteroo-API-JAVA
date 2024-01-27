@@ -25,8 +25,13 @@ public class TweetService {
         return tweetRepository.findAll();
     }
 
-    public String findUserTweets() {
-        return "To be implemented";
+    public Optional<List<TweetModel>> findAllUserTweets(Long userId) {
+        boolean userExist = userRepository.existsById(userId);
+        if (!userExist) {
+            return Optional.empty();
+        }
+
+        return Optional.of(tweetRepository.findAllByUserId(userId));
     }
 
     public Optional<TweetModel> save(TweetDTO body) {

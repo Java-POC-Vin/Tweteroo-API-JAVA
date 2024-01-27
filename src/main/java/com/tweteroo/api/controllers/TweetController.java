@@ -34,8 +34,14 @@ public class TweetController {
     }
 
     @GetMapping("/user/{userId}")
-    public String getUserTweets(@PathVariable("userId") int userId) {
-        return "To be implemented";
+    public ResponseEntity<Object> getUserTweets(@PathVariable("userId") Long userId) {
+        Optional<List<TweetModel>> tweets = tweetService.findAllUserTweets(userId);
+
+        if (tweets.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User does not exist");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(tweets.get());
     }
 
     @PostMapping
