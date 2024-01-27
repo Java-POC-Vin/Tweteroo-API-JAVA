@@ -1,5 +1,6 @@
 package com.tweteroo.api.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -20,8 +21,8 @@ public class TweetService {
         this.userRepository = userRepository;
     }
 
-    public String findAll() {
-        return "To be implemented";
+    public List<TweetModel> findAll() {
+        return tweetRepository.findAll();
     }
 
     public String findUserTweets() {

@@ -9,6 +9,7 @@ import com.tweteroo.api.services.TweetService;
 
 import jakarta.validation.Valid;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -28,8 +29,8 @@ public class TweetController {
     }
 
     @GetMapping
-    public String getTweets() {
-        return "To be implemented";
+    public List<TweetModel> findAll() {
+        return tweetService.findAll();
     }
 
     @GetMapping("/user/{userId}")
