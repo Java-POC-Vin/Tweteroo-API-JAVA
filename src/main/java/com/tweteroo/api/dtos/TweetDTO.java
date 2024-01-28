@@ -10,7 +10,7 @@ public class TweetDTO {
 
     @NotBlank(message = "Tweet cannot be empty")
     @Size(max = 280)
-    private String tweet;
+    private String text;
 
     @NotNull(message = "Tweet must belong to an existing user")
     private Long userId;
